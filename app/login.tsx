@@ -110,7 +110,7 @@ export default function Screen() {
 			<BottomSheet
 				ref={bottomSheetRef}
 				index={-1}
-				snapPoints={['93%']}
+				snapPoints={['94%']}
 				enablePanDownToClose
 				onChange={handleOnBottomSheetChange}
 				backgroundStyle={{

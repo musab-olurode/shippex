@@ -3,6 +3,9 @@
 		"preview": {
 			"android": {
 				"buildType": "apk"
+			},
+			"env": {
+				"EXPO_PUBLIC_API_BASE_URL": "https://shippex-demo.bc.brandimic.com"
 			}
 		},
 		"production": {}

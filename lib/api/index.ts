@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { router } from 'expo-router';
 
-const baseURL = `${process.env.EXPO_PUBLIC_BASE_URL}/api/method`;
+const baseURL = `${process.env.EXPO_PUBLIC_API_BASE_URL}/api/method`;
 
 const axiosInstance = axios.create({
 	baseURL,
