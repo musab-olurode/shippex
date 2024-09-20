@@ -8,14 +8,11 @@ import WalletIcon from '~/assets/icons/wallet.svg';
 import WalletActiveIcon from '~/assets/icons/wallet-active.svg';
 import ProfileIcon from '~/assets/icons/profile.svg';
 import ProfileActiveIcon from '~/assets/icons/profile-active.svg';
-import { StatusBar } from 'expo-status-bar';
-import { ThemeToggle } from '~/components/theme-toggle';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AUTH_USER, NAV_THEME } from '~/lib/constants';
-import { useColorScheme } from '~/lib/use-color-scheme';
+import { AUTH_USER } from '~/lib/constants';
+import { StatusBar } from 'expo-status-bar';
 
 export default function TabLayout() {
-	const { isDarkColorScheme } = useColorScheme();
 	const router = useRouter();
 
 	React.useEffect(() => {
@@ -30,19 +27,20 @@ export default function TabLayout() {
 
 	return (
 		<>
-			<StatusBar
-				style={isDarkColorScheme ? 'light' : 'dark'}
-				// backgroundColor={
-				// 	isDarkColorScheme
-				// 		? NAV_THEME.dark.background
-				// 		: NAV_THEME.light.background
-				// }
-			/>
+			<StatusBar backgroundColor='#fff' />
 			<Tabs
 				screenOptions={{
 					tabBarActiveTintColor: '#2F50C1',
 					tabBarInactiveTintColor: '#A7A3B3',
-					headerShown: false,
+					tabBarStyle: {
+						paddingBottom: 10,
+						height: 60,
+					},
+					tabBarLabelStyle: {
+						fontSize: 11,
+						fontWeight: '400',
+						lineHeight: 13,
+					},
 				}}
 			>
 				<Tabs.Screen
@@ -51,6 +49,7 @@ export default function TabLayout() {
 						title: 'Shipments',
 						tabBarIcon: ({ focused }) =>
 							focused ? <ShipmentsActiveIcon /> : <ShipmentsIcon />,
+						headerShown: false,
 					}}
 				/>
 				<Tabs.Screen
@@ -75,8 +74,6 @@ export default function TabLayout() {
 						title: 'Profile',
 						tabBarIcon: ({ focused }) =>
 							focused ? <ProfileActiveIcon /> : <ProfileIcon />,
-						headerShown: true,
-						// headerRight: () => <ThemeToggle />,
 					}}
 				/>
 			</Tabs>

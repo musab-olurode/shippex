@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text } from '~/components/ui/text';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 
 export default function Screen() {
 	return (
-		<SafeAreaView>
+		<View className='px-4 pb-4'>
 			<Text>Wallet</Text>
-		</SafeAreaView>
+		</View>
 	);
 }

@@ -25,16 +25,15 @@ export default function Screen() {
 
 	const handleOnCloseBottomSheet = () => {
 		bottomSheetRef.current?.close();
-		setBottomSheetOpen(false);
-		Keyboard.dismiss();
-		navigation.setOptions({
-			navigationBarColor: '#2F50C1',
-		});
 	};
 
 	const handleOnBottomSheetChange = (index: number) => {
 		if (index === -1) {
-			handleOnCloseBottomSheet();
+			setBottomSheetOpen(false);
+			Keyboard.dismiss();
+			navigation.setOptions({
+				navigationBarColor: '#2F50C1',
+			});
 		}
 	};
 
@@ -49,6 +48,19 @@ export default function Screen() {
 	const viewAnimation = useAnimatedStyle(() => {
 		return {
 			paddingHorizontal: withTiming(bottomSheetOpen ? 10 : 0, {
+				duration: 150,
+				easing: Easing.in(Easing.ease),
+			}),
+			paddingTop: withTiming(bottomSheetOpen ? 50 : 0, {
+				duration: 150,
+				easing: Easing.in(Easing.ease),
+			}),
+		};
+	});
+
+	const backgroundViewAnimation = useAnimatedStyle(() => {
+		return {
+			borderRadius: withTiming(bottomSheetOpen ? 10 : 0, {
 				duration: 150,
 				easing: Easing.in(Easing.ease),
 			}),
@@ -70,20 +82,18 @@ export default function Screen() {
 		);
 
 		return () => backHandler.remove();
-	}, []);
+	}, [bottomSheetOpen]);
 
 	return (
 		<AnimatedView className='flex-1 bg-black' style={viewAnimation}>
 			<StatusBar
 				style='light'
-				translucent={!bottomSheetOpen}
-				backgroundColor={bottomSheetOpen ? '#000' : undefined}
+				animated
+				backgroundColor={bottomSheetOpen ? '#000' : '#2F50C1'}
 			/>
-			<View
-				className={cn(
-					'flex-1 justify-center items-center gap-5 p-6 relative bg-primary',
-					bottomSheetOpen && 'rounded-t-[0.625rem]'
-				)}
+			<AnimatedView
+				className='flex-1 justify-center items-center gap-5 p-6 relative bg-primary'
+				style={backgroundViewAnimation}
 			>
 				<Image
 					source={LogoWithText}
@@ -97,11 +107,11 @@ export default function Screen() {
 				>
 					<Text>Login</Text>
 				</Button>
-			</View>
+			</AnimatedView>
 			<BottomSheet
 				ref={bottomSheetRef}
 				index={-1}
-				snapPoints={['99%']}
+				snapPoints={['94%']}
 				enablePanDownToClose
 				onChange={handleOnBottomSheetChange}
 				backgroundStyle={{
@@ -113,7 +123,7 @@ export default function Screen() {
 					backgroundColor: '#A7A3B3',
 				}}
 			>
-				<BottomSheetView style={{ flex: 1, backgroundColor: '#fff' }}>
+				<BottomSheetView style={{ backgroundColor: '#fff', minHeight: 40 }}>
 					<View className='pl-2'>
 						<Pressable
 							className='flex flex-row items-center gap-2'

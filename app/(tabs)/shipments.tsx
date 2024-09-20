@@ -187,7 +187,10 @@ export default function Screen() {
 						className='flex flex-row gap-2 native:px-0 py-0 h-fit'
 						onPress={handleOnCheckAll}
 					>
-						<Checkbox checked={isAllChecked} onCheckedChange={() => {}} />
+						<Checkbox
+							checked={isAllChecked}
+							onCheckedChange={handleOnCheckAll}
+						/>
 						<Text className='text-lg font-normal'>Mark All</Text>
 					</Button>
 				</View>

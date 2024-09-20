@@ -92,10 +92,12 @@ export const ShipmentFilterBottomSheetProvider: React.FC<
 				}}
 				style={{ zIndex: 2 }}
 			>
-				<BottomSheetView style={{ backgroundColor: '#fff' }}>
-					<StatusBar translucent backgroundColor='transparent' />
+				<BottomSheetView style={{ backgroundColor: '#fff', minHeight: 40 }}>
 					{pathname === '/shipments' && (
-						<ShipmentFilter closeBottomSheet={closeBottomSheet} />
+						<>
+							<StatusBar translucent backgroundColor='transparent' />
+							<ShipmentFilter closeBottomSheet={closeBottomSheet} />
+						</>
 					)}
 				</BottomSheetView>
 			</BottomSheet>
