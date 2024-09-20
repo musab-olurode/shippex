@@ -9,7 +9,6 @@ import { Platform } from 'react-native';
 import { NAV_THEME } from '~/lib/constants';
 import { useColorScheme } from '~/lib/use-color-scheme';
 import { PortalHost } from '@rn-primitives/portal';
-import { ThemeToggle } from '~/components/theme-toggle';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ShipmentFilterBottomSheetProvider } from '~/context/shipment-filter-context';

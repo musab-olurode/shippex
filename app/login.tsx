@@ -5,7 +5,6 @@ import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import LogoWithText from '~/assets/images/logo-with-text.png';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import { cn } from '~/lib/utils';
 import ChevronIcon from '~/assets/icons/chevron.svg';
 import Animated, {
 	Easing,
