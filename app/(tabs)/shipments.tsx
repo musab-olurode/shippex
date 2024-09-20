@@ -57,6 +57,7 @@ export default function Screen() {
 		refetch: refetchShipmentList,
 	} = useGetShipmentList();
 	const queryClient = useQueryClient();
+	const [isRefreshing, setIsRefreshing] = React.useState(isPendingShipmentList);
 
 	const shipmentStatus = useMemo(() => {
 		let parsedStatus:
@@ -80,11 +81,13 @@ export default function Screen() {
 
 	React.useEffect(() => {
 		if (shipmentList && shipmentList.message.length > 0) {
+			setIsRefreshing(true);
 			const checkedList = shipmentList.message.map((shipment) => ({
 				...shipment,
 				checked: false,
 			}));
 			setShipmentListWithChecked(checkedList);
+			setIsRefreshing(false);
 		}
 	}, [shipmentList]);
 
@@ -201,7 +204,7 @@ export default function Screen() {
 						progressViewOffset={-300}
 						progressBackgroundColor='#F4F2F8'
 						colors={['#2F50C1']}
-						refreshing={isPendingShipmentList}
+						refreshing={isPendingShipmentList || isRefreshing}
 						onRefresh={refetchShipmentList}
 					/>
 				}
@@ -223,7 +226,9 @@ export default function Screen() {
 					</Accordion>
 				)}
 				ListEmptyComponent={
-					isPendingShipmentList ? ListLoadingComponent : ListEmptyComponent
+					isPendingShipmentList || isRefreshing
+						? ListLoadingComponent
+						: ListEmptyComponent
 				}
 			/>
 		</SafeAreaView>

@@ -110,7 +110,7 @@ export default function Screen() {
 			<BottomSheet
 				ref={bottomSheetRef}
 				index={-1}
-				snapPoints={['94%']}
+				snapPoints={['93%']}
 				enablePanDownToClose
 				onChange={handleOnBottomSheetChange}
 				backgroundStyle={{
@@ -122,8 +122,10 @@ export default function Screen() {
 					backgroundColor: '#A7A3B3',
 				}}
 			>
-				<BottomSheetView style={{ backgroundColor: '#fff', minHeight: 40 }}>
-					<View className='pl-2'>
+				<BottomSheetView
+					style={{ flex: 1, backgroundColor: '#fff', minHeight: 40 }}
+				>
+					<View className='pl-4'>
 						<Pressable
 							className='flex flex-row items-center gap-2'
 							onPress={handleOnCloseBottomSheet}

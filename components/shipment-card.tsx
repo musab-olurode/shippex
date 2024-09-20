@@ -175,16 +175,18 @@ const ShipmentCardHeader = ({
 		>
 			<Checkbox checked={checked} onCheckedChange={setChecked} />
 			<BoxIcon />
-			<View
-				className='flex flex-col w-[8.76875rem] shrink-0'
-				style={{ width: 140.3 }}
-			>
-				<Text className='font-normal text-[#3F395C] text-[0.8125rem] leading-[1.1375rem]'>
-					AWB
-				</Text>
-				<Text className='font-semibold text-lg leading-[1.575rem]'>
-					{shipment.name}
-				</Text>
+			<View className='grow'>
+				<View className='flex flex-row items-end'>
+					<View className='flex flex-col grow pr-[0.875rem]'>
+						<Text className='font-normal text-[#3F395C] text-[0.8125rem] leading-[1.1375rem]'>
+							AWB
+						</Text>
+						<Text className='font-semibold text-lg leading-[1.575rem]'>
+							{shipment.name}
+						</Text>
+					</View>
+					<Tag status={shipment.status} statusDetails={status} />
+				</View>
 				<View className='flex flex-row items-center gap-2'>
 					<Text className='font-normal text-[#757281] text-[0.8125rem] leading-[1.1375rem] capitalize'>
 						{shipment.origin_city}
@@ -194,9 +196,6 @@ const ShipmentCardHeader = ({
 						{shipment.destination_city}
 					</Text>
 				</View>
-			</View>
-			<View className='grow flex flex-row justify-center'>
-				<Tag status={shipment.status} statusDetails={status} />
 			</View>
 			<AccordionTrigger />
 		</View>

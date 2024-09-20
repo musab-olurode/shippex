@@ -142,6 +142,8 @@ export default function LoginForm() {
 					errorMessage={errors?.url}
 				/>
 				<Input
+					keyboardType='email-address'
+					autoCapitalize='none'
 					placeholder='Username / Email'
 					onChangeText={handleChange('username')}
 					onBlur={validate}
@@ -168,7 +170,6 @@ export default function LoginForm() {
 				}
 				loading={isPending}
 				onPress={handleSubmit}
-				// onPress={() => router.push('/shipments' as Href<string | object>)}
 			>
 				<Text>Login</Text>
 			</Button>
