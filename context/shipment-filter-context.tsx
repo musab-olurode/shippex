@@ -11,7 +11,6 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import { BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types';
-import { Text } from '~/components/ui/text';
 import ShipmentFilter from '~/components/shipment-filter';
 import { StatusBar } from 'expo-status-bar';
 import { usePathname } from 'expo-router';
@@ -95,7 +94,7 @@ export const ShipmentFilterBottomSheetProvider: React.FC<
 				<BottomSheetView style={{ backgroundColor: '#fff', minHeight: 40 }}>
 					{pathname === '/shipments' && (
 						<>
-							<StatusBar translucent backgroundColor='transparent' />
+							{bottomSheetOpen && <StatusBar translucent />}
 							<ShipmentFilter closeBottomSheet={closeBottomSheet} />
 						</>
 					)}

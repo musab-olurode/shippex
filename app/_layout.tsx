@@ -120,8 +120,8 @@ export default function RootLayout() {
 		<QueryClientProvider client={queryClient}>
 			<GestureHandlerRootView style={{ flex: 1 }}>
 				<ShipmentFilterBottomSheetProvider>
-					<ThemeProvider value={isDarkColorScheme ? LIGHT_THEME : DARK_THEME}>
-						<StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
+					<ThemeProvider value={LIGHT_THEME}>
+						<StatusBar style='dark' />
 						<Routes />
 						<Toaster />
 						<PortalHost />
